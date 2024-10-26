@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, send_from_directory
 from werkzeug.utils import secure_filename
+from flask_login import login_required
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 import os
@@ -105,12 +106,14 @@ def login():
     return render_template('login.html')
 
 @app.route('/logout')
+@login_required
 def logout():
     session.pop('username', None)
     flash('You have been logged out!', 'info')
     return redirect(url_for('home'))
 
 @app.route('/lip-sync', methods=['GET', 'POST'])
+@login_required
 def lip_sync():
     if 'username' not in session:
         return redirect(url_for('login'))
@@ -173,11 +176,13 @@ def lip_sync():
     return render_template('lip_sync.html')
 
 @app.route('/process')
+@login_required
 def process():
     # In the template, you can use JavaScript to periodically check for lip-sync completion
     return render_template('process.html')
 
 @app.route('/check-status')
+@login_required
 def check_status():
     """Endpoint to check if the output file exists (indicating completion)."""
     username = session.get('username')
@@ -190,6 +195,7 @@ def check_status():
     return {'status': 'processing'}
 
 @app.route('/preview')
+@login_required
 def preview():
     if 'username' not in session:
         return redirect(url_for('login'))
@@ -201,6 +207,7 @@ def preview():
     return render_template('preview.html', video_path=output_video_path, filename=output_video_filename)
 
 @app.route('/download/<path:filename>')
+@login_required
 def download_video(filename):
     username = session['username']
     output_video_path = os.path.join(app.config['UPLOAD_FOLDER'], username, 'output', filename)
