@@ -218,9 +218,6 @@ with app.app_context():
 # Run the app
 if __name__ == '__main__':
 
-    # Kill any existing ngrok processes to reset before starting a new tunnel
-    subprocess.call(['taskkill', '/F', '/IM', 'ngrok.exe'])
-
     # Set your ngrok authentication token (replace with your actual token)
     NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN", "2nIgFxwsnemn7rVvBtVlDHOuR09_3C9tjbVFjwo8ujieqaLbr")
     ngrok.set_auth_token(NGROK_AUTH_TOKEN)
