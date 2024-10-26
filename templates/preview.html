@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Preview{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Preview Your Lip-Synced Video</h1>
+
+    <video controls>
+        <source src="{{ url_for('download_video', filename=filename) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <a href="{{ url_for('download_video', filename=filename) }}" class="btn">Download Video</a>
+    <a href="{{ url_for('lip_sync') }}" class="btn btn-secondary">Re-Lip-Sync</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
