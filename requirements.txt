@@ -1,0 +1,14 @@
+flask
+jinja2
+flask-sqlalchemy
+flask_bcrypt
+pyngrok
+librosa
+numpy
+opencv-contrib-python
+opencv-python
+torch
+torchvision
+tqdm
+numba
+ffmpeg

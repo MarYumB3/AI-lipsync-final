@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Preview{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Preview Lip-Sync Output</h1>
+  
+  {% if video_path %}
+      <div class="video-container">
+          <video width="600" controls>
+              <source src="{{ url_for('download_video', filename=filename) }}" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="buttons">
+          <a href="{{ url_for('download_video', filename=filename) }}" class="btn btn-download">Download Video</a>
+          <a href="{{ url_for('lip_sync') }}" class="btn btn-secondary">Re-Lip-Sync</a>
+      </div>
+      <form action="{{ url_for('submit_feedback') }}" method="POST">
+          <input type="hidden" name="username" value="{{ session['username'] }}">
+          <label for="feedback">Provide Feedback:</label>
+          <textarea name="feedback" id="feedback" rows="4" placeholder="Enter your feedback here..." required></textarea>
+          <button type="submit" class="btn btn-submit">Submit Feedback</button>
+      </form>
+  {% else %}
+      <p>Video processing is in progress. Please refresh the page after a few moments.</p>
+  {% endif %}
+</div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }}">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+
+{% endblock %}

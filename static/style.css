@@ -1,0 +1,213 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Base page styling */
+body {
+    background-color: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styling */
+header {
+    background-color: #0077cc;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 1em;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffdd57;
+}
+
+/* Flash messages */
+.flash {
+    padding: 0.8em;
+    margin: 1em 0;
+    border-radius: 4px;
+}
+
+.flash.success { background-color: #d4edda; color: #155724; }
+.flash.danger { background-color: #f8d7da; color: #721c24; }
+.flash.info { background-color: #cce5ff; color: #004085; }
+
+/* Main content styling */
+main {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 1em;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form label {
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"],
+form input[type="submit"],
+form button {
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="file"]:focus {
+    border-color: #0077cc;
+    outline: none;
+}
+
+form button,
+form input[type="submit"] {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+    background-color: #005fa3;
+}
+
+
+
+/* Links */
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #0077cc;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+video {
+    display: block;
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.4em;
+    }
+
+    main {
+        padding: 1em;
+    }
+
+    header nav a {
+        display: block;
+        margin: 0.5em 0;
+    }
+}
+

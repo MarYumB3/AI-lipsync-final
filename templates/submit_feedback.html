@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Feedback Page Styles */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+</style>
+
+<div class="container">
+    <h1>Feedback</h1>
+    <form id="feedback-form" method="post" action="{{ url_for('submit_feedback') }}">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
+        <label for="feedback">Feedback:</label>
+        <textarea name="feedback" required></textarea><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
