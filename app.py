@@ -236,5 +236,7 @@ if __name__ == '__main__':
     ngrok_tunnel = ngrok.connect(addr="5000", host_header="rewrite", domain=RESERVED_DOMAIN)
     app.logger.info("ngrok tunnel \"{}\" -> \"http://127.0.0.1:5000\"".format(ngrok_tunnel.public_url))
 
+    print("present-really-yeti.ngrok-free.app")
+
 
     app.run()
